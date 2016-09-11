@@ -9,7 +9,7 @@ Math对象：
 	Math.floor(x) 用来对x进行下取整
 	Math.random() 用来产生一个 0<=y<1 的随机数，若要产生0-7的随机数，即 Math.random()*8 即可
 */
-<!DOCTYPE html>
+
 var data=['姓杨的小弟a', '胸哥', '老班长', '麦大哥', '伟志锅锅', '姓林的小弟b'];
 var timer=null;
 var flag=0;	/*0表示抽奖未开始，1表示抽奖开始了*/
