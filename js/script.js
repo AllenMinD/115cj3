@@ -1,34 +1,34 @@
 /*
-¶¨Ê±Æ÷µÄÊ¹ÓÃ
-var timer=null;			//³õÊ¼»¯Ò»¸ö¶¨Ê±Æ÷
-clearInterval(timer);	//Ã¿´ÎÊ¹ÓÃ¶¨Ê±Æ÷Ö®Ç°£¬¡¾Ò»¶¨¡¿ÒªÇå¿ÕÒ»´Î¶¨Ê±Æ÷£¬À´½â¾öÖØ¸´¶à´Î´¥·¢¶¨Ê±Æ÷µÄBUG
-timer = setInterval(func, time);	//¶¨Ê±Æ÷ÓÃsetIntervalÕâ¸öº¯Êı²úÉú£¬ÀïÃæÓĞÁ½¸ö²ÎÊı£ºµÚÒ»¸ö²ÎÊıÊÇÒ»¸öº¯Êıa£¬µÚ¶ş¸öÊÇÊ±¼äb£¨ºÁÃë£©
-									//ÒâË¼ÊÇ"Ã¿¹ıbºÁÃëºóÖ´ĞĞÒ»´Îº¯Êıa"
+å®šæ—¶å™¨çš„ä½¿ç”¨
+var timer=null;			//åˆå§‹åŒ–ä¸€ä¸ªå®šæ—¶å™¨
+clearInterval(timer);	//æ¯æ¬¡ä½¿ç”¨å®šæ—¶å™¨ä¹‹å‰ï¼Œã€ä¸€å®šã€‘è¦æ¸…ç©ºä¸€æ¬¡å®šæ—¶å™¨ï¼Œæ¥è§£å†³é‡å¤å¤šæ¬¡è§¦å‘å®šæ—¶å™¨çš„BUG
+timer = setInterval(func, time);	//å®šæ—¶å™¨ç”¨setIntervalè¿™ä¸ªå‡½æ•°äº§ç”Ÿï¼Œé‡Œé¢æœ‰ä¸¤ä¸ªå‚æ•°ï¼šç¬¬ä¸€ä¸ªå‚æ•°æ˜¯ä¸€ä¸ªå‡½æ•°aï¼Œç¬¬äºŒä¸ªæ˜¯æ—¶é—´bï¼ˆæ¯«ç§’ï¼‰
+									//æ„æ€æ˜¯"æ¯è¿‡bæ¯«ç§’åæ‰§è¡Œä¸€æ¬¡å‡½æ•°a"
 		
-Math¶ÔÏó£º
-	Math.floor(x) ÓÃÀ´¶Ôx½øĞĞÏÂÈ¡Õû
-	Math.random() ÓÃÀ´²úÉúÒ»¸ö 0<=y<1 µÄËæ»úÊı£¬ÈôÒª²úÉú0-7µÄËæ»úÊı£¬¼´ Math.random()*8 ¼´¿É
+Mathå¯¹è±¡ï¼š
+	Math.floor(x) ç”¨æ¥å¯¹xè¿›è¡Œä¸‹å–æ•´
+	Math.random() ç”¨æ¥äº§ç”Ÿä¸€ä¸ª 0<=y<1 çš„éšæœºæ•°ï¼Œè‹¥è¦äº§ç”Ÿ0-7çš„éšæœºæ•°ï¼Œå³ Math.random()*8 å³å¯
 */
-
-var data=['ĞÕÑîµÄĞ¡µÜa', 'ĞØ¸ç', 'ÀÏ°à³¤', 'Âó´ó¸ç', 'Î°Ö¾¹ø¹ø', 'ĞÕÁÖµÄĞ¡µÜb'];
+<!DOCTYPE html>
+var data=['å§“æ¨çš„å°å¼Ÿa', 'èƒ¸å“¥', 'è€ç­é•¿', 'éº¦å¤§å“¥', 'ä¼Ÿå¿—é”…é”…', 'å§“æ—çš„å°å¼Ÿb'];
 var timer=null;
-var flag=0;	/*0±íÊ¾³é½±Î´¿ªÊ¼£¬1±íÊ¾³é½±¿ªÊ¼ÁË*/
+var flag=0;	/*0è¡¨ç¤ºæŠ½å¥–æœªå¼€å§‹ï¼Œ1è¡¨ç¤ºæŠ½å¥–å¼€å§‹äº†*/
 
 window.onload = function(){
 	var play = document.getElementById('play');
 	var stop = document.getElementById('stop');
 	
-	//ÓÃÊó±ê ¿ªÊ¼³é½±
+	//ç”¨é¼ æ ‡ å¼€å§‹æŠ½å¥–
 	play.onclick = playFunc;
-	//ÓÃÊó±ê Í£Ö¹³é½±
+	//ç”¨é¼ æ ‡ åœæ­¢æŠ½å¥–
 	stop.onclick = stopFunc;
 	
-	//ÓÃ¼üÅÌ ¿ªÊ¼³é½±
+	//ç”¨é”®ç›˜ å¼€å§‹æŠ½å¥–
 	document.onkeyup = function(e){
 		e = e || window.event;
 		if (e.keyCode==13)
 		{
-			if (flag==0)	//flay==0ËµÃ÷»¹Ã»°´¿ªÊ¼
+			if (flag==0)	//flay==0è¯´æ˜è¿˜æ²¡æŒ‰å¼€å§‹
 			{
 				playFunc();
 				flag=1;
@@ -45,22 +45,22 @@ window.onload = function(){
 
 function playFunc()
 {
-	flag=1;									//³é½±¿ªÆôÁË
+	flag=1;									//æŠ½å¥–å¼€å¯äº†
 	var play = document.getElementById('play');
 	var title = document.getElementById('title');
-	clearInterval(timer);					//Ê¹ÓÃ¶¨Ê±Æ÷Ö®Ç°£¬ÏÈÇå¿Õ
+	clearInterval(timer);					//ä½¿ç”¨å®šæ—¶å™¨ä¹‹å‰ï¼Œå…ˆæ¸…ç©º
 	timer = setInterval(function(){
 		var randomResult = Math.floor(Math.random()*data.length);
 		title.innerHTML = data[randomResult];
 	}, 50);
 	
-	play.style.background = '#ccc';			//ÔÚ³é½±Ê±¸Ä±ä"¿ª Ê¼"°´Å¥µÄ±³¾°ÑÕÉ«
+	play.style.background = '#ccc';			//åœ¨æŠ½å¥–æ—¶æ”¹å˜"å¼€ å§‹"æŒ‰é’®çš„èƒŒæ™¯é¢œè‰²
 }
 
 
 function stopFunc()
 {
-	clearInterval(timer);	//Çå¿Õ¶¨Ê±Æ÷£¬¼´¿ÉÍ£Ö¹³é½±
+	clearInterval(timer);	//æ¸…ç©ºå®šæ—¶å™¨ï¼Œå³å¯åœæ­¢æŠ½å¥–
 	var play = document.getElementById('play');
 	play.style.background = '#036';
 	flag=0;
